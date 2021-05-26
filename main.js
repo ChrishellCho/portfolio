@@ -23,9 +23,15 @@ navbarMenu.addEventListener("click", (event) => {
   if (link == null) {
     return;
   }
-
+  navbarMenu.classList.remove("open");
   // console.log(event.target.dataset.link);
   scrollInto(link);
+});
+
+// Navbar toggle button for small screen
+const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
+navbarToggleBtn.addEventListener("click", () => {
+  navbarMenu.classList.toggle("open");
 });
 
 // Handle click on "contact me" button on home
@@ -56,7 +62,7 @@ arrowUp.addEventListener("click", () => {
   scrollInto("#home");
 });
 
-// Prjects
+// Projects
 const workBtnContainer = document.querySelector(".work__categories");
 const projectContainer = document.querySelector(".work__projects");
 const projects = document.querySelectorAll(".project");
