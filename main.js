@@ -66,11 +66,18 @@ workBtnContainer.addEventListener("click", (e) => {
     return;
   }
 
+  // Remove selection from the previous itm and select the new one
+  const active = document.querySelector(".category__btn.selected");
+  active.classList.remove("selected");
+  const target =
+    e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
+  target.classList.add("selected");
+
   projectContainer.classList.add("anim-out");
 
   setTimeout(() => {
     projects.forEach((project) => {
-      console.log(project.dataset.type);
+      // console.log(project.dataset.type);
       if (filter === "*" || filter === project.dataset.type) {
         project.classList.remove("invisible");
       } else {
@@ -86,7 +93,7 @@ function scrollInto(selector) {
   const top =
     scrollMove.offsetTop - navbarHeight < 0
       ? 0
-      : scrollMove.offsetTop - navbarHeight + 16;
+      : scrollMove.offsetTop - navbarHeight + 17;
   const scrollTo = document.querySelector(selector);
   window.scrollTo({ top: top, behavior: "smooth" });
 }
